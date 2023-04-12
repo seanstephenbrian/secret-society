@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h1 Become a Member
+    if currentUser && currentUser.member
+        p You're already a member!
+        p 
+            a(href='/') Go Home 
+            a(href='/log-out') Log Out
+    if currentUser && !currentUser.member
+        p To become a member, you must enter the secret code.
+        form(action='' method='POST')
+            label(for='code') Secret code: 
+            input(name='code' type='password' required)
+            input(name='id' type='hidden' value=(currentUser.id))
+            input(type='submit')
+    if !currentUser
+        p Before becoming a full initiate of the Secret Society, you must 
+            a(href='sign-up') sign up
+            | .
+        p If you already have an account, please 
+            a(href='log-in') log in
+            |  using your credentials.

@@ -15,6 +15,7 @@ const bcrypt = require('bcryptjs');
 var indexRouter = require('./routes/index');
 const logInRouter = require('./routes/log-in');
 const logOutRouter = require('./routes/log-out');
+const memberRouter = require('./routes/become-a-member');
 const signUpRouter = require('./routes/sign-up');
 
 const User = require('./models/user');
@@ -86,6 +87,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/log-in', logInRouter);
 app.use('/log-out', logOutRouter);
+app.use('/become-a-member', memberRouter);
 app.use('/sign-up', signUpRouter);
 
 // catch 404 and forward to error handler
