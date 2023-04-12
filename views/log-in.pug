@@ -5,7 +5,7 @@ block content
     if currentUser 
         p You're already logged in, #{currentUser.firstName}.
         p Click 
-            a(href='log-out') here
+            a(href='log-out/') here
             |  to log out.
     else
         form(action='' method='POST')

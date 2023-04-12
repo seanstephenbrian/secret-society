@@ -15,12 +15,12 @@ router.post('/', async function(req, res, next) {
                 const err = new Error('Unable to locate user.');
                 return next(err);
             }
-            res.send('you are now a member');
+            res.render('welcome');
         } catch(err) {
             return next(err);
         }
     } else {
-        res.send('failure');
+        res.render('wrong-code');
     }
 }
 );

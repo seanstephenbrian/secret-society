@@ -69,7 +69,7 @@ router.post('/',
                         password: hashedPassword
                     });
                     const result = await user.save();
-                    res.redirect('./');
+                    res.redirect('/log-in');
                 } catch(err) {
                     return next(err);
                 };
