@@ -9,11 +9,7 @@ block content
                 name='firstName' 
                 type='text' 
                 required
-                value=(
-                    req.firstName ?
-                    req.firstName :
-                    ''
-                )
+                value=(req.firstName ? req.firstName : '')
             )
         .form-section
             label(for='lastName') Last Name:
@@ -21,11 +17,7 @@ block content
                 name='lastName'
                 type='text'
                 required
-                value=(
-                    req.lastName ?
-                    req.lastName :
-                    ''
-                )
+                value=(req.lastName ? req.lastName : '')
             )
         .form-section
             label(for='email') Email: 
@@ -33,11 +25,7 @@ block content
                 name='email'
                 type='email'
                 required
-                value=(
-                    req.email ?
-                    req.email :
-                    ''
-                )
+                value=(req.email ? req.email : '')
             )
         .form-section
             label(for='password') Password:

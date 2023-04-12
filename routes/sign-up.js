@@ -5,7 +5,16 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 
-router.get('/', (req, res) => res.render('sign-up'));
+router.get('/', 
+    (req, res) => {
+        const dummyReq = {
+            firstName: '',
+            lastName: '',
+            email: ''
+        }
+        res.render('sign-up', { req: dummyReq })
+    }
+);
 
 router.post('/',
     [
