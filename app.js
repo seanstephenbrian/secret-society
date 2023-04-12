@@ -1,41 +1,86 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+require('dotenv').config();
+var createError = require('http-errors');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-require('dotenv').config();
+const compression = require('compression');
+const helmet = require('helmet');
+const bcrypt = require('bcryptjs');
 
 var indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/sign-up');
-const compression = require('compression');
-const helmet = require('helmet');
+const logInRouter = require('./routes/log-in');
+
+const User = require('./models/user');
 
 var app = express();
 
 // set up mongoose connection:
-const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 const mongoDB = process.env.MONGO_URI;
-
 main().catch(err => console.log(err));
 async function main() {
     await mongoose.connect(mongoDB);
 }
 
-// view engine setup
+// view engine setup:
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// passportjs setup:
+passport.use(
+    new LocalStrategy(async(username, password, done) => {
+        try {
+            const user = await User.findOne({ email: username });
+            if (!user) {
+                return done(null, false, { message: 'Invalid email' });
+            }
+            bcrypt.compare(password, user.password, (err, res) => {
+                if (res) {
+                    return done(null, user);
+                } else {
+                    return done(null, false, { message: 'Incorrect password' });
+                }
+            });
+        } catch(err) {
+            return done(err);
+        };
+    })
+);
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async function(id, done) {
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch(err) {
+        done(err);
+    }
+});
+
 app.use(logger('dev'));
 app.use(express.json());
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// routers:
 app.use('/', indexRouter);
 app.use('/sign-up', signUpRouter);
+app.use('/log-in', logInRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

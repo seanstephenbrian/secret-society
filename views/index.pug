@@ -1,8 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to the Secret Society 
-  p Click 
-    a(href='/sign-up') here
-    |  to sign up.
+    h1= title
+    if user 
+        p Welcome back, #{user.firstName}
+
+    else
+        p Welcome to the Secret Society 
+        p Click 
+            a(href='/sign-up') here
+            |  to sign up.
