@@ -28,7 +28,7 @@ router.post('/',
             .isLength( { min: 3, max: 320 } )
             .withMessage('Email is required.')
             .isEmail()
-            .withMessage('Must be a valid email address.'),
+            .withMessage('Email must be a valid email address.'),
         body('password')
             .trim()
             .isString()
@@ -45,8 +45,7 @@ router.post('/',
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-            // return res.render('error', { message: errors.msg });
+            return res.render('sign-up', { errors: errors.array(), req: req.body });
         }
 
         bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
