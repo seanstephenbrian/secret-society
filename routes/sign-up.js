@@ -11,36 +11,42 @@ router.post('/',
     [
         body('firstName')
             .trim()
-            .exists()
             .isString()
-            .isLength( { max: 30 } ),
+            .isLength( { min: 1 } )
+            .withMessage('First name is required.')
+            .isLength( { max: 30 } )
+            .withMessage('First name cannot be longer than 30 characters.'),
         body('lastName')
             .trim()
-            .exists()
             .isString()
-            .isLength( { max: 30 } ),
+            .isLength( { min: 1 } )
+            .withMessage('Last name is required.')
+            .isLength( { max: 30 } )
+            .withMessage('Last name cannot be longer than 30 characters.'),
         body('email')
             .trim()
-            .exists()
+            .isLength( { min: 3, max: 320 } )
+            .withMessage('Email is required.')
             .isEmail()
-            .isLength( { min: 3, max: 320 } ),
+            .withMessage('Must be a valid email address.'),
         body('password')
             .trim()
-            .exists()
             .isString()
-            .isLength( { max: 100 } ),
+            .isLength( { min: 8 } )
+            .withMessage('Password must be at least 8 characters long.')
+            .isLength( { max: 100 } )
+            .withMessage('Password cannot be more than 100 characters long.'),
         body('confirmPassword')
-            .trim()
-            .exists()
-            .isString()
-            .custom((value, { req }) => value === req.body.password),
+            .custom((value, { req }) => value === req.body.password)
+            .withMessage('Password confirmation must match password.')
     ],
     (req, res, next) => {
-        console.log('1');
+
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
+            // return res.render('error', { message: errors.msg });
         }
 
         bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
