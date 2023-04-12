@@ -13,8 +13,9 @@ const helmet = require('helmet');
 const bcrypt = require('bcryptjs');
 
 var indexRouter = require('./routes/index');
-const signUpRouter = require('./routes/sign-up');
 const logInRouter = require('./routes/log-in');
+const logOutRouter = require('./routes/log-out');
+const signUpRouter = require('./routes/sign-up');
 
 const User = require('./models/user');
 
@@ -71,6 +72,10 @@ app.use(express.json());
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
@@ -79,8 +84,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routers:
 app.use('/', indexRouter);
-app.use('/sign-up', signUpRouter);
 app.use('/log-in', logInRouter);
+app.use('/log-out', logOutRouter);
+app.use('/sign-up', signUpRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

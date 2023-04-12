@@ -2,11 +2,17 @@ extends layout
 
 block content 
     h1 Log In
-    form(action='' method='POST')
-        .form-section
-            label(for='username') Email: 
-            input(name='username' type='email' required)
-        .form-section
-            label(for='password') Password:
-            input(name='password' type='password' required)
-        input(type='submit')
+    if currentUser 
+        p You're already logged in, #{currentUser.firstName}.
+        p Click 
+            a(href='log-out') here
+            |  to log out.
+    else
+        form(action='' method='POST')
+            .form-section
+                label(for='username') Email: 
+                input(name='username' type='email' required)
+            .form-section
+                label(for='password') Password:
+                input(name='password' type='password' required)
+            input(type='submit')

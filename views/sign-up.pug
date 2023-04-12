@@ -2,46 +2,54 @@ extends layout
 
 block content 
     h1 Sign Up
-    form(action='' method='POST')
-        .form-section
-            label(for='firstName') First Name: 
-            input(
-                name='firstName' 
-                type='text' 
-                required
-                value=(req.firstName ? req.firstName : '')
-            )
-        .form-section
-            label(for='lastName') Last Name:
-            input(
-                name='lastName'
-                type='text'
-                required
-                value=(req.lastName ? req.lastName : '')
-            )
-        .form-section
-            label(for='email') Email: 
-            input(
-                name='email'
-                type='email'
-                required
-                value=(req.email ? req.email : '')
-            )
-        .form-section
-            label(for='password') Password:
-            input(name='password' type='password' required)
-        .form-section 
-            label(for='confirmPassword') Confirm Password: 
-            input(name='confirmPassword' type='password' required)
-        input(type='submit')
-    
-    if errors
-        h2 Unable the process the request.
-        if (errors.length === 1)
-            h3 Please correct this error:
-        else
-            h3 Please correct the following errors:
-        ul(class='errors')
-            each error in errors
-                li.error #{error.msg}
+    if currentUser && !currentUser.member
+        p You've already signed up.
+        p Click 
+            a(href='/membership') here
+            |  to become a member.
+    if currentUser && currentUser.member
+        p You're already a member!
+    else if !currentUser
+        form(action='' method='POST')
+            .form-section
+                label(for='firstName') First Name: 
+                input(
+                    name='firstName' 
+                    type='text' 
+                    required
+                    value=(req.firstName ? req.firstName : '')
+                )
+            .form-section
+                label(for='lastName') Last Name:
+                input(
+                    name='lastName'
+                    type='text'
+                    required
+                    value=(req.lastName ? req.lastName : '')
+                )
+            .form-section
+                label(for='email') Email: 
+                input(
+                    name='email'
+                    type='email'
+                    required
+                    value=(req.email ? req.email : '')
+                )
+            .form-section
+                label(for='password') Password:
+                input(name='password' type='password' required)
+            .form-section 
+                label(for='confirmPassword') Confirm Password: 
+                input(name='confirmPassword' type='password' required)
+            input(type='submit')
+        
+        if errors
+            h2 Unable the process the request.
+            if (errors.length === 1)
+                h3 Please correct this error:
+            else
+                h3 Please correct the following errors:
+            ul(class='errors')
+                each error in errors
+                    li.error #{error.msg}
 

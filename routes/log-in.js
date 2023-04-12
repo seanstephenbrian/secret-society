@@ -6,12 +6,11 @@ router.get('/', function(req, res, next) {
     res.render('log-in');
 });
 
-
 router.post(
     '/',
     passport.authenticate('local', {
-        successRedirect: '/success',
-        failureRedirect: '/failure'
+        successRedirect: '/',
+        failureRedirect: '/'
     })
 );
 

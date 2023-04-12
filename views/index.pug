@@ -2,11 +2,21 @@ extends layout
 
 block content
     h1= title
-    if user 
-        p Welcome back, #{user.firstName}
+    if currentUser
+        p Welcome back, #{currentUser.firstName + ' ' + currentUser.lastName}.
+        if !currentUser.member
+            p You are not yet a full initiate of the Society.
+            p If you believe you are ready, you may attempt to  
+                a(href='/membership') become a full member
+                | .
+        p
+            a(href='/log-out') Log Out
 
     else
         p Welcome to the Secret Society 
-        p Click 
-            a(href='/sign-up') here
-            |  to sign up.
+        p If you're a returning user, you can 
+            a(href='/log-in') log in here
+            | .
+        p New visitors can 
+            a(href='/sign-up') sign up here
+            | .
