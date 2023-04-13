@@ -11,7 +11,7 @@ router.get('/',
             firstName: '',
             lastName: '',
             email: ''
-        }
+        };
         res.render('sign-up', { req: dummyReq })
     }
 );

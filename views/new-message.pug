@@ -9,11 +9,28 @@ block content
             input(name='author' id='author' type='hidden' value=(currentUser.id))
             .form-section
                 label(for='title') Title:
-                input(name='title' type='text' required)
+                input(
+                    name='title' 
+                    type='text' 
+                    required
+                    value=(req.title ? req.title : '')
+                )
             .form-section 
                 label(for='body') Message: 
                 textarea(name='body')
+                    #{req.body}
             input(type='submit')
+    
+    if errors
+        h2 Unable the process the request.
+        if (errors.length === 1)
+            h3 Please correct this error:
+        else
+            h3 Please correct the following errors:
+        ul(class='errors')
+            each error in errors
+                li.error #{error.msg}
+
     else if currentUser && !currentUser.member
         p Sorry #{currentUser.firstName}, you must be a full member of the Secret Society to a post a message.
         p If you know the secret code, you can attempt to 

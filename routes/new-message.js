@@ -4,26 +4,34 @@ const { body, validationResult } = require('express-validator');
 
 const Message = require('../models/message');
 
-router.get('/', function(req, res, next) {
-    res.render('new-message');
-});
+router.get(
+    '/',
+    (req, res) => {
+        const dummyReq = {
+            title: '',
+            body: ''
+        };
+        res.render('new-message', { req: dummyReq })
+    }
+);
 
-router.post('/',
+router.post(
+    '/',
     [
         body('title')
             .trim()
             .isString()
             .isLength( { min: 1 } )
-            .withMessage('Message title is required.')
+            .withMessage('Message title cannot be empty.')
             .isLength( { max: 100 })
             .withMessage('Message title cannot be longer than 100 characters'),
         body('body')
             .trim()
             .isString()
             .isLength( { min: 1 } )
-            .withMessage('Message cannot be empty.')
+            .withMessage('Message body cannot be empty.')
             .isLength( { max: 1000 } )
-            .withMessage('Message cannot be longer than 1000 characters')
+            .withMessage('Message body cannot be longer than 1000 characters')
     ],
     async (req, res, next) => {
 
