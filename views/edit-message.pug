@@ -23,3 +23,13 @@ block content
                 label(for='body') Message: 
                 textarea(name='body')=message.body
             input(type='submit')
+
+    if errors
+        h2 Unable the process the request.
+        if (errors.length === 1)
+            h3 Please correct this error:
+        else
+            h3 Please correct the following errors:
+        ul(class='errors')
+            each error in errors
+                li.error #{error.msg}
