@@ -2,6 +2,8 @@ extends layout
 
 block content 
     h1 Log In
+    if error 
+        p=error
     if currentUser 
         p You're already logged in, #{currentUser.firstName}.
         p Click 

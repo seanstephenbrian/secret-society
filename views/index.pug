@@ -30,5 +30,5 @@ block content
             .message
                 h2 #{message.title}
                 if currentUser && currentUser.member
-                    p #{message.author.firstName} #{message.author.lastName} - #{message.timestamp}
+                    p #{message.author.firstName} #{message.author.lastName} - #{message.date}
                 p #{message.body}

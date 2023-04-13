@@ -17,8 +17,7 @@ block content
                 )
             .form-section 
                 label(for='body') Message: 
-                textarea(name='body')
-                    #{req.body}
+                textarea(name='body')=req.body
             input(type='submit')
     
     if errors
