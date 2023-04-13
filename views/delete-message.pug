@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+
+    if message && currentUser && currentUser.admin
+        h1 Deleting #{message.title}.
+        p Are you sure you want to proceed?
+        form(action='/delete' method='POST')
+            input(type='hidden' id='id' value=(message.id))
+            input(type='submit' value='Delete')
+        p  
+            a(href='/') Go Home
+
+    else 
+        h1 Unable to complete request.
+        p Click here to 
+            a(href='/') go home
+            | .
