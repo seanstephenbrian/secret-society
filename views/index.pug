@@ -5,14 +5,14 @@ block content
     if currentUser
         p Welcome back, #{currentUser.firstName + ' ' + currentUser.lastName}.
         if !currentUser.member
-            p You are not yet a full initiate of the Society.
+            p You are not yet an initiate of the Society.
+            p To view the complete author and date information for the messages below, you must become a full member.
             p If you believe you are ready, you may attempt to  
-                a(href='/become-a-member/') become a full member
+                a(href='/become-a-member/') gain membership here
                 | .
-        else if currentUser.member 
-            p Post a 
-                a(href='/new-message/') new message
-                | .
+         
+        p  
+            a(href='/new-message/') Create New Message
         p
             a(href='/log-out/') Log Out
 
