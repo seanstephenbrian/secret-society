@@ -11,8 +11,18 @@ block content
         form(action='' method='POST')
             .form-section
                 label(for='username') Email: 
-                input(name='username' type='email' required)
+                input(
+                    name='username'
+                    id='username'
+                    type='email'
+                    required
+                )
             .form-section
                 label(for='password') Password:
-                input(name='password' type='password' required)
+                input(
+                    name='password'
+                    id='password'
+                    type='password'
+                    required
+                )
             input(type='submit')

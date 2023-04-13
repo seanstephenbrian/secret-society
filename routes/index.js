@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
         .sort({ timestamp: 1 })
         .populate('author title timestamp body')
         .then((message_list) => {
-            console.log(message_list);
             res.render(
                 'index', 
                 { 

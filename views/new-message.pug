@@ -1,0 +1,27 @@
+extends layout 
+
+block content
+
+    h1 Create a New Message
+
+    if currentUser && currentUser.member
+        form(action='' method='POST')
+            input(name='author' id='author' type='hidden' value=(currentUser.id))
+            .form-section
+                label(for='title') Title:
+                input(name='title' type='text' required)
+            .form-section 
+                label(for='body') Message: 
+                textarea(name='body')
+            input(type='submit')
+    else if currentUser && !currentUser.member
+        p Sorry #{currentUser.firstName}, you must be a full member of the Secret Society to a post a message.
+        p If you know the secret code, you can attempt to 
+            a(href='/become-a-member/') become a member
+            | .
+
+    else if !currentUser
+        p Please 
+            a(href='/log-in/') log in
+            |  before continuing.
+    

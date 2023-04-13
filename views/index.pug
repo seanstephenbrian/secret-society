@@ -9,6 +9,10 @@ block content
             p If you believe you are ready, you may attempt to  
                 a(href='/become-a-member/') become a full member
                 | .
+        else if currentUser.member 
+            p Post a 
+                a(href='/new-message/') new message
+                | .
         p
             a(href='/log-out/') Log Out
 

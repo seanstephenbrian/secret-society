@@ -15,6 +15,7 @@ block content
                 label(for='firstName') First Name: 
                 input(
                     name='firstName' 
+                    id='firstName'
                     type='text' 
                     required
                     value=(req.firstName ? req.firstName : '')
@@ -23,6 +24,7 @@ block content
                 label(for='lastName') Last Name:
                 input(
                     name='lastName'
+                    id='lastName'
                     type='text'
                     required
                     value=(req.lastName ? req.lastName : '')
@@ -31,16 +33,27 @@ block content
                 label(for='email') Email: 
                 input(
                     name='email'
+                    id='email'
                     type='email'
                     required
                     value=(req.email ? req.email : '')
                 )
             .form-section
                 label(for='password') Password:
-                input(name='password' type='password' required)
+                input(
+                    name='password'
+                    id='password'
+                    type='password'
+                    required
+                )
             .form-section 
                 label(for='confirmPassword') Confirm Password: 
-                input(name='confirmPassword' type='password' required)
+                input(
+                    name='confirmPassword'
+                    id='confirmPassword'
+                    type='password'
+                    required
+                )
             input(type='submit')
         
         if errors
