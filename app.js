@@ -15,6 +15,7 @@ const flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 const adminRouter = require('./routes/become-admin');
+const editRouter = require('./routes/edit');
 const logInRouter = require('./routes/log-in');
 const logOutRouter = require('./routes/log-out');
 const memberRouter = require('./routes/become-a-member');
@@ -90,6 +91,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routers:
 app.use('/', indexRouter);
 app.use('/become-admin', adminRouter);
+app.use('/edit', editRouter);
 app.use('/log-in', logInRouter);
 app.use('/log-out', logOutRouter);
 app.use('/become-a-member', memberRouter);
