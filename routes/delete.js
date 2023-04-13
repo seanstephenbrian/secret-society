@@ -4,7 +4,7 @@ var router = express.Router();
 const Message = require('../models/message');
 
 router.get('/:id', function(req, res, next) {
-    Message.findOne({ _id: req.params.id }, 'message')
+    Message.findById(req.params.id)
         .populate('title body')
         .then((message) => {
             res.render('delete-message', { message: message });
@@ -14,8 +14,17 @@ router.get('/:id', function(req, res, next) {
         });
 });
 
-router.post('/', function(req, res, next) {
-    res.send('delete');
+router.post('/', async function(req, res, next) {
+    try {
+        const deletedMessage = await Message.findByIdAndDelete(req.body.id);
+        if (!deletedMessage) {
+            const err = new Error('Unable to delete message.');
+            return next(err);
+        }
+        res.redirect('/');
+    } catch(err) {
+        return next(err);
+    }
 });
 
 module.exports = router;

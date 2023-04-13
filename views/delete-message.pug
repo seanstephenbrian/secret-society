@@ -6,7 +6,7 @@ block content
         h1 Deleting #{message.title}.
         p Are you sure you want to proceed?
         form(action='/delete' method='POST')
-            input(type='hidden' id='id' value=(message.id))
+            input(type='hidden' name='id' id='id' value=(message.id))
             input(type='submit' value='Delete')
         p  
             a(href='/') Go Home
