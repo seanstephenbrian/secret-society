@@ -1,23 +1,27 @@
 var express = require('express');
 var router = express.Router();
 
+const Message = require('../models/message');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render(
-        'index', 
-        { 
-            title: 'Secret Society',
-            user: req.user
-        }
-    );
-});
-
-router.get('/success', function(req, res, next) {
-    res.send('success');
-});
-
-router.get('/failure', function(req, res, next) {
-    res.send('failure');
+    Message.find({}, 'message')
+        .sort({ timestamp: 1 })
+        .populate('author title timestamp body')
+        .then((message_list) => {
+            console.log(message_list);
+            res.render(
+                'index', 
+                { 
+                    title: 'Secret Society',
+                    user: req.user,
+                    messages: message_list
+                }
+            );
+        })
+        .catch((err) => {
+            return next(err);
+        });
 });
 
 module.exports = router;

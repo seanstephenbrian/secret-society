@@ -20,3 +20,11 @@ block content
         p New visitors can 
             a(href='/sign-up/') sign up here
             | .
+
+    section.messages
+        each message in messages
+            .message
+                h2 #{message.title}
+                if currentUser && currentUser.member
+                    p #{message.author.firstName} #{message.author.lastName} - #{message.timestamp}
+                p #{message.body}
