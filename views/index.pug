@@ -10,7 +10,11 @@ block content
             p If you believe you are ready, you may attempt to  
                 a(href='/become-a-member/') gain membership here
                 | .
-         
+        else if currentUser.member && !currentUser.admin
+            p To gain administrator access, you must 
+                a(href='/become-admin/') enter the ultra-secret admin passcode
+                | .
+
         p  
             a(href='/new-message/') Create New Message
         p
@@ -32,3 +36,5 @@ block content
                 if currentUser && currentUser.member
                     p #{message.author.firstName} #{message.author.lastName} - #{message.date}
                 p #{message.body}
+                if currentUser && currentUser.admin 
+                    a(href=(`edit/` + message.id)) Edit

@@ -11,8 +11,10 @@ var logger = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
 const bcrypt = require('bcryptjs');
+const flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
+const adminRouter = require('./routes/become-admin');
 const logInRouter = require('./routes/log-in');
 const logOutRouter = require('./routes/log-out');
 const memberRouter = require('./routes/become-a-member');
@@ -81,11 +83,13 @@ app.use(function(req, res, next) {
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
+app.use(flash());
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routers:
 app.use('/', indexRouter);
+app.use('/become-admin', adminRouter);
 app.use('/log-in', logInRouter);
 app.use('/log-out', logOutRouter);
 app.use('/become-a-member', memberRouter);

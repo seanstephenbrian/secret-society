@@ -10,7 +10,7 @@ block content
     if currentUser && !currentUser.member
         p To become a member, you must enter the secret code.
         form(action='' method='POST')
-            label(for='code') Secret code: 
+            label(for='code') Secret Code: 
             input(name='code' id='code' type='password' required)
             input(name='id' id='id' type='hidden' value=(currentUser.id))
             input(type='submit')
