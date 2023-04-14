@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www & npm run sass",
-    "sass": "sass --watch sass/main.scss public/styles/style.css"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -19,11 +18,11 @@
     "helmet": "^6.1.5",
     "http-errors": "~1.6.3",
     "luxon": "^3.3.0",
+    "mkdirp": "^3.0.0",
     "mongoose": "^7.0.3",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "pug": "2.0.0-beta11",
-    "sass": "^1.62.0"
+    "pug": "2.0.0-beta11"
   }
 }
