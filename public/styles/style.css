@@ -37,6 +37,8 @@ time, mark, audio, video {
 
     /* colors: */
     --green: #3d5a2c;
+    --inline-link: #396f91;
+    --new-message-button: #6296b7a5;
     --red: #824E4A;
     --site-bg: #fcdaba;
     --transparent-white: #ffffffa4;
@@ -115,13 +117,31 @@ nav {
 }
 
 .intro {
-    font-size: calc(0.7*var(--rvv));
+    font-size: calc(0.6*var(--rvv));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: calc(0.2*var(--rvv));
+    gap: calc(0.25*var(--rvv));
     margin: calc(0.3*var(--rvv)) 0 calc(0.5*var(--rvv));
+}
+
+.intro p {
+    text-align: center;
+}
+
+.intro p a {
+    color: var(--inline-link);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.intro p a:visited {
+    color: var(--inline-link);
+}
+
+.welcome {
+    font-size: calc(0.8*var(--rvv));
 }
 
 .username {
@@ -135,6 +155,14 @@ nav {
     align-items: center;
 }
 
+.messages-top-matter {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .messages-heading {
     width: 50%;
     max-width: 800px;
@@ -142,6 +170,24 @@ nav {
     font-size: calc(var(--rvv));
     display: flex;
     justify-content: center;
+}
+
+.messages-top-matter .messages-heading {
+    width: fit-content;
+    margin: 0;
+    margin-right: auto;
+    justify-content: flex-start;
+}
+
+.new-message-button {
+    cursor: pointer;
+    margin: 10px 0;
+    border: none;
+    font-family: 'Cormorant';
+    font-size: calc(0.7*var(--rvv));
+    background-color: var(--new-message-button);
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .messages-container {
@@ -212,13 +258,20 @@ nav {
         padding: calc(1*var(--rvv));
     }
 
-    .nav-link {
-        font-size: calc(0.6*var(--rvv));
+    .nav-link,
+    .edit-button,
+    .new-message-button {
         transition: transform 0.1s ease-in-out;
     }
 
-    .nav-link:hover {
+    .nav-link:hover,
+    .edit-button:hover,
+    .new-message-button:hover {
         transform: scale(1.05);
+    }
+
+    .nav-link {
+        font-size: calc(0.6*var(--rvv));
     }
 
     .message-body {
@@ -227,13 +280,7 @@ nav {
 
     .edit-button {
         padding: 7px 10px;
-        transition: transform 0.1s ease-in-out;
     }
-
-    .edit-button:hover {
-        transform: scale(1.05);
-    }
-
 }
 
 @media screen and (min-width: 918px) {

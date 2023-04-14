@@ -11,16 +11,22 @@ block content
                 | Click the link above the begin the process.
 
     else
-        p Welcome to the Secret Society 
-        p If you're a returning user, please 
-            a(href='/log-in/') log in
-            |  to begin posting messages.
-        p If this is your first time visiting the Society, you can 
-            a(href='/sign-up/') sign up here
-            | .
+        section.intro
+            p.welcome Welcome to the Secret Society.
+            p If you're a returning user, please 
+                a(href='/log-in/') log in
+                |  to begin posting messages.
+            p First-time visitors can  
+                a(href='/sign-up/') sign up here
+                | .
 
     section.messages
-        h1.messages-heading Messages
+        if currentUser && currentUser.member
+            .messages-top-matter
+                h1.messages-heading Messages
+                button.new-message-button Post New Message
+        else
+            h1.messages-heading Messages
         .messages-container
             each message in messages
                 .message
