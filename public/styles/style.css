@@ -69,6 +69,10 @@ header {
     margin-bottom: calc(0.5*var(--rvv));
 }
 
+.title-link {
+    text-decoration: none;
+}
+
 .site-title {
     font-family: 'Stencilus';
     font-size: calc(2.5*var(--rvv));
@@ -246,6 +250,42 @@ nav {
     color: black;
 }
 
+.new-message-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-message-page h1 {
+    font-size: calc(var(--rvv));
+}
+
+.new-message-page form {
+    margin-top: 20px;
+    padding: 20px 30px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 7px;
+    background-color: var(--transparent-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.new-message-page form .form-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new-message-page form .form-section label {
+    font-size: calc(0.8*var(--rvv));
+}
+
 /* desktop styles: */
 
 @media only screen and (min-width: 500px) {
@@ -280,6 +320,10 @@ nav {
 
     .edit-button {
         padding: 7px 10px;
+    }
+
+    .new-message-page form .form-section label {
+        font-size: calc(0.7*var(--rvv));
     }
 }
 

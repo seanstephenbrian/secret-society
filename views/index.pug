@@ -24,7 +24,8 @@ block content
         if currentUser && currentUser.member
             .messages-top-matter
                 h1.messages-heading Messages
-                button.new-message-button Post New Message
+                a(href='/new-message/')
+                    button.new-message-button Post New Message
         else
             h1.messages-heading Messages
         .messages-container

@@ -2,46 +2,46 @@ extends layout
 
 block content
 
-    h1 Create a New Message
+    .new-message-page
+        h1 Post a New Message
 
-    if currentUser && !currentUser.member
-        p Hello, #{currentUser.firstName}. 
-        p You can post a new message with the form below, but remember that you 
-            | must be an initiated member of the Secret Society to view the complete information 
-            | about other users' messages.
-        p If you know the secret code, you can attempt to 
-            a(href='/become-a-member/') become a member
-            | .
+        if currentUser && !currentUser.member
+            p Hello, #{currentUser.firstName}. 
+            p You can post a new message with the form below, but remember that you 
+                | must be an initiated member of the Secret Society to view the complete information 
+                | about other users' messages.
+            p If you know the secret code, you can attempt to 
+                a(href='/become-a-member/') become a member
+                | .
 
-    if currentUser
-        h2 New Message
-        form(action='' method='POST')
-            input(name='author' id='author' type='hidden' value=(currentUser.id))
-            .form-section
-                label(for='title') Title:
-                input(
-                    name='title' 
-                    type='text' 
-                    required
-                    value=(req.title ? req.title : '')
-                )
-            .form-section 
-                label(for='body') Message: 
-                textarea(name='body')=req.body
-            input(type='submit')
-    
-    if errors
-        h2 Unable the process the request.
-        if (errors.length === 1)
-            h3 Please correct this error:
-        else
-            h3 Please correct the following errors:
-        ul(class='errors')
-            each error in errors
-                li.error #{error.msg}
+        if currentUser
+            form(action='' method='POST')
+                input(name='author' id='author' type='hidden' value=(currentUser.id))
+                .form-section
+                    label(for='title') Title:
+                    input(
+                        name='title' 
+                        type='text' 
+                        required
+                        value=(req.title ? req.title : '')
+                    )
+                .form-section 
+                    label(for='body') Message: 
+                    textarea(name='body')=req.body
+                input(type='submit')
+        
+        if errors
+            h2 Unable the process the request.
+            if (errors.length === 1)
+                h3 Please correct this error:
+            else
+                h3 Please correct the following errors:
+            ul(class='errors')
+                each error in errors
+                    li.error #{error.msg}
 
-    else if !currentUser
-        p Please 
-            a(href='/log-in/') log in
-            |  before continuing.
+        else if !currentUser
+            p Please 
+                a(href='/log-in/') log in
+                |  before continuing.
     

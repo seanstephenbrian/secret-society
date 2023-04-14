@@ -6,26 +6,27 @@ html
         meta(name='viewport' content='width=device-width, initial-scale=1')
     body
         header 
-            h1.site-title
-                span.green s
-                span.red e
-                span.green c
-                span.red r
-                span.green e
-                span.red t
-                span  
-                span.green s
-                span.red o
-                span.green c
-                span.red i
-                span.green e
-                span.red t
-                span.green y
+            a(class='title-link' href='/')
+                h1.site-title
+                    span.green s
+                    span.red e
+                    span.green c
+                    span.red r
+                    span.green e
+                    span.red t
+                    span  
+                    span.green s
+                    span.red o
+                    span.green c
+                    span.red i
+                    span.green e
+                    span.red t
+                    span.green y
             nav
                 ul.nav-links
                     if currentUser 
-                        //- li.nav-link
-                        //-     a(href='/new-message/') Post New Message 
+                        li.nav-link
+                            a(href='/') Go Home
                         if !currentUser.member
                             li.nav-link 
                                 a(href='/become-a-member/') Become a Member 
