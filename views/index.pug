@@ -1,40 +1,32 @@
 extends layout
 
 block content
-    h1= title
     if currentUser
-        p Welcome back, #{currentUser.firstName + ' ' + currentUser.lastName}.
-        if !currentUser.member
-            p You are not yet an initiate of the Society.
-            p To view the complete author and date information for the messages below, you must become a full member.
-            p If you believe you are ready, you may attempt to  
-                a(href='/become-a-member/') gain membership here
-                | .
-        else if currentUser.member && !currentUser.admin
-            p To gain administrator access, you must 
-                a(href='/become-admin/') enter the ultra-secret admin passcode
-                | .
-
-        p  
-            a(href='/new-message/') Create New Message
-        p
-            a(href='/log-out/') Log Out
+        section.intro
+            p Welcome back, 
+                span.username #{currentUser.firstName + ' ' + currentUser.lastName}.
+            if !currentUser.member
+                p You are not yet an initiate of the Society.
+                p To view the complete author and date information for the messages below, you must become a full member.
+                | Click the link above the begin the process.
 
     else
         p Welcome to the Secret Society 
-        p If you're a returning user, you can 
-            a(href='/log-in/') log in here
-            | .
-        p New visitors can 
+        p If you're a returning user, please 
+            a(href='/log-in/') log in
+            |  to begin posting messages.
+        p If this is your first time visiting the Society, you can 
             a(href='/sign-up/') sign up here
             | .
 
     section.messages
-        each message in messages
-            .message
-                h2 #{message.title}
-                if currentUser && currentUser.member
-                    p #{message.author.firstName} #{message.author.lastName} - #{message.date}
-                p #{message.body}
-                if currentUser && currentUser.admin 
-                    a(href=(`edit/` + message.id)) Edit
+        h1.messages-heading Messages
+        .messages-container
+            each message in messages
+                .message
+                    h2 #{message.title}
+                    if currentUser && currentUser.member
+                        p #{message.author.firstName} #{message.author.lastName} - #{message.date}
+                    p #{message.body}
+                    if currentUser && currentUser.admin 
+                        a(href=(`edit/` + message.id)) Edit
