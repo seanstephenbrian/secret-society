@@ -24,9 +24,11 @@ block content
         .messages-container
             each message in messages
                 .message
-                    h2 #{message.title}
+                    h2.message-title #{message.title}
                     if currentUser && currentUser.member
-                        p #{message.author.firstName} #{message.author.lastName} - #{message.date}
-                    p #{message.body}
+                        .author-date
+                            .message-author #{message.author.firstName} #{message.author.lastName}
+                            .message-date #{message.date}
+                    p.message-body #{message.body}
                     if currentUser && currentUser.admin 
-                        a(href=(`edit/` + message.id)) Edit
+                        a(class='edit-button' href=(`edit/` + message.id)) Edit
