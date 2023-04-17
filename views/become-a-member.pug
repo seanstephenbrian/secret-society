@@ -5,9 +5,6 @@ block content
         h1 Become a Member
         if currentUser && currentUser.member
             p You're already a member!
-            p 
-                a(href='/') Go Home 
-                a(href='/log-out/') Log Out
         if currentUser && !currentUser.member
             p To become a member, you must enter the secret code.
             form(class='password-form' action='' method='POST')

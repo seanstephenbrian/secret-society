@@ -537,7 +537,7 @@ nav {
     max-width: 750px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
 }
 
@@ -557,6 +557,7 @@ nav {
     align-items: center;
     gap: calc(0.5*var(--rvv));
     max-width: 750px;
+    text-align: center;
 }
 
 .become-member-page h1 {
@@ -579,8 +580,6 @@ nav {
 .become-member-page.new-member-page {
     text-align: center;
 }
-
-
 
 /* desktop styles: */
 
