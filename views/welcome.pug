@@ -1,8 +1,9 @@
 extends layout 
 
-block content 
-    h1 Congratulations, #{currentUser.firstName} #{currentUser.lastName}. 
-    h2 You are now an active member of the Secret Society.
-    p Click to 
-        a(href='/') return home
-        |  and start sharing messages with other members.
+block content
+    .become-member-page.new-member-page
+        h1 Congratulations, #{currentUser.firstName} #{currentUser.lastName}. 
+        p You are now an active member of the Secret Society.
+        p Click to 
+            a(class='inline-link' href='/') return home
+            |  and start sharing messages with other members.

@@ -3,16 +3,21 @@ var router = express.Router();
 const passport = require('passport');
 
 router.get('/', function(req, res, next) {
-    if (req.query.failed) {
-        res.render('log-in', { error: 'Log-in failed. Please make sure email and password are correct.'});
-    }
     res.render('log-in');
 });
+
+router.get('/failed', function(req, res, next) {
+    res.render('log-in', { error: 'Log-in failed. Please make sure email and password are correct.'});
+});
+
+router.post('/failed', function(req, res, next) {
+    res.render('log-in', { error: 'Log-in failed. Please make sure email and password are correct.'});
+})
 
 router.post('/',
     passport.authenticate(
         'local',
-        { failureRedirect: '/log-in?failed=true' }
+        { failureRedirect: '/log-in/failed' }
     ),
     function(req, res) {
         res.redirect('/');

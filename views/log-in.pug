@@ -4,7 +4,8 @@ block content
     .log-in-page
         h1 Log In
         if error 
-            p=error
+            section.error
+                p=error
         if currentUser 
             p You're already logged in, #{currentUser.firstName}.
             p Click 

@@ -495,7 +495,6 @@ nav {
 
 .password-form {
     align-self: center;
-    width: 90%;
     max-width: 750px;
     display: flex;
     flex-direction: column;
@@ -505,8 +504,9 @@ nav {
 }
 
 .password-form label {
+    width: 100%;
+    text-align: start;
     font-size: calc(0.6*var(--rvv));
-    margin-right: 10px;
 }
 
 .password-form .text-input {
@@ -515,7 +515,7 @@ nav {
     border: none;
     outline: none;
     font-family: 'Cormorant';
-    font-size: 1.5rem;
+    font-size: calc(0.6*var(--rvv));
     border-radius: 3px;
     background-color: #ffffffe0;
 }
@@ -537,13 +537,50 @@ nav {
     max-width: 750px;
     display: flex;
     flex-direction: column;
+    gap: 20px;
     align-items: center;
 }
 
 .log-in-page h1 {
     font-size: calc(0.8*var(--rvv));
-    margin-bottom: 30px;
 }
+
+.error {
+    font-size: calc(0.6*var(--rvv));
+}
+
+.become-member-page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.5*var(--rvv));
+    max-width: 750px;
+}
+
+.become-member-page h1 {
+    font-size: calc(0.8*var(--rvv));
+}
+
+.become-member-page p {
+    font-size: calc(0.6*var(--rvv));
+}
+
+.become-member-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.become-member-page .password-form .submit-button {
+    margin-top: 10px;
+}
+
+.become-member-page.new-member-page {
+    text-align: center;
+}
+
+
 
 /* desktop styles: */
 
