@@ -9,7 +9,7 @@ block content
         if currentUser 
             p You're already logged in, #{currentUser.firstName}.
             p Click 
-                a(href='log-out/') here
+                a(class='inline-link' href='log-out/') here
                 |  to log out.
         else
             form(class='password-form' action='' method='POST')

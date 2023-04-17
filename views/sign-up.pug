@@ -1,68 +1,72 @@
 extends layout 
 
 block content 
-    h1 Sign Up
-    if currentUser && !currentUser.member
-        p You've already signed up.
-        p Click 
-            a(href='/become-a-member/') here
-            |  to become a member.
-    if currentUser && currentUser.member
-        p You're already a member!
-    else if !currentUser
-        form(action='' method='POST')
-            .form-section
+    .sign-up-page
+        .already-signed-up
+            if currentUser && !currentUser.member
+                p You've already signed up.
+                p Click 
+                    a(class='inline-link' href='/become-a-member/') here
+                    |  to become a member.
+        if currentUser && currentUser.member
+            h1 You're already a member!
+            p
+                a(class='inline-link' href='/') Go home
+                |  to post messages to other Society members.
+        else if !currentUser
+            h1 Sign Up
+            if errors
+                section.sign-up-form-errors.message-form-errors
+                    if (errors.length === 1)
+                        p Please correct this error:
+                    else
+                        p Please correct the following errors:
+                    ul(class='errors')
+                        each error in errors
+                            li.error #{error.msg}
+            form(class='sign-up-form' action='' method='POST')
                 label(for='firstName') First Name: 
                 input(
+                    class='text-input'
                     name='firstName' 
                     id='firstName'
                     type='text' 
                     required
                     value=(req.firstName ? req.firstName : '')
                 )
-            .form-section
                 label(for='lastName') Last Name:
                 input(
+                    class='text-input'
                     name='lastName'
                     id='lastName'
                     type='text'
                     required
                     value=(req.lastName ? req.lastName : '')
                 )
-            .form-section
                 label(for='email') Email: 
                 input(
+                    class='text-input'
                     name='email'
                     id='email'
                     type='email'
                     required
                     value=(req.email ? req.email : '')
                 )
-            .form-section
                 label(for='password') Password:
                 input(
+                    class='text-input'
                     name='password'
                     id='password'
                     type='password'
                     required
                 )
-            .form-section 
                 label(for='confirmPassword') Confirm Password: 
                 input(
+                    class='text-input'
                     name='confirmPassword'
                     id='confirmPassword'
                     type='password'
                     required
                 )
-            input(type='submit')
-        
-        if errors
-            h2 Unable the process the request.
-            if (errors.length === 1)
-                h3 Please correct this error:
-            else
-                h3 Please correct the following errors:
-            ul(class='errors')
-                each error in errors
-                    li.error #{error.msg}
+                input(class='submit-button' type='submit')
 

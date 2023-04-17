@@ -2,14 +2,12 @@ extends layout
 
 block content 
 
-
     .message-page
         h1 Edit a Message
 
         if message 
             if errors
                 section.message-form-errors
-                    p Unable the process the request.
                     if (errors.length === 1)
                         p Please correct this error:
                     else

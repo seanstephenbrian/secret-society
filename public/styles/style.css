@@ -493,7 +493,8 @@ nav {
     font-size: calc(0.6*var(--rvv));
 }
 
-.password-form {
+.password-form,
+.sign-up-form {
     align-self: center;
     max-width: 750px;
     display: flex;
@@ -503,13 +504,15 @@ nav {
     gap: 10px;
 }
 
-.password-form label {
+.password-form label,
+.sign-up-form label {
     width: 100%;
     text-align: start;
     font-size: calc(0.6*var(--rvv));
 }
 
-.password-form .text-input {
+.password-form .text-input,
+.sign-up-form .text-input {
     width: 300px;
     padding: 5px;
     border: none;
@@ -520,7 +523,8 @@ nav {
     background-color: #ffffffe0;
 }
 
-.password-form .submit-button {
+.password-form .submit-button,
+.sign-up-form .submit-button {
     margin-top: 30px;
     width: fit-content;
     cursor: pointer;
@@ -579,6 +583,45 @@ nav {
 
 .become-member-page.new-member-page {
     text-align: center;
+}
+
+.sign-up-page {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.already-signed-up {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.sign-up-page h1 {
+    font-size: calc(0.8*var(--rvv));
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sign-up-page p {
+    font-size: calc(0.6*var(--rvv));
+}
+
+.sign-up-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up-page form input {
+    margin-bottom: 3px;
+}
+
+.sign-up-page form .submit-button {
+    margin-top: 10px;
+}
+
+.sign-up-page .sign-up-form-errors.message-form-errors {
+    margin-bottom: 20px;
 }
 
 /* desktop styles: */
