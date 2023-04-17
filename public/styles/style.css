@@ -36,6 +36,7 @@ time, mark, audio, video {
     --rvv: calc(1rem + 1vmin + 1vmax);
 
     /* colors: */
+    --delete-red: #f9877f;
     --green: #3d5a2c;
     --inline-link: #396f91;
     --new-message-button: #6ca6c9a5;
@@ -250,15 +251,32 @@ nav {
     color: black;
 }
 
-.new-message-page {
+.message-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.new-message-page h1 {
+.message-page h1 {
     font-size: calc(var(--rvv));
+}
+
+.delete-message-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: calc(0.6*var(--rvv));
+    text-decoration: none;
+    color: black;
+    background-color: var(--delete-red);
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+.delete-message-button:visited {
+    color: black;
 }
 
 .message-form-errors {
@@ -297,7 +315,7 @@ nav {
     background-size: contain;
 }
 
-.new-message-page form {
+.message-page form {
     margin-top: 20px;
     padding: 20px 30px;
     width: 80%;
@@ -318,19 +336,28 @@ nav {
     margin-right: auto;
 }
 
-.new-message-page form .form-section {
+.edit-message {
+    position: relative;
+}
+
+.edit-message-form-title {
+    text-decoration: none;
+    max-width: 80%;
+}
+
+.message-page form .form-section {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.new-message-page form .form-section label {
+.message-page form .form-section label {
     font-size: calc(0.8*var(--rvv));
 }
 
-.new-message-page form .form-section input,
-.new-message-page form .form-section textarea {
+.message-page form .form-section input,
+.message-page form .form-section textarea {
     border: none;
     outline: none;
     font-family: 'Cormorant';
@@ -350,7 +377,7 @@ nav {
     resize: none;
 }
 
-.new-message-form-submit {
+.message-form-submit {
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -375,14 +402,16 @@ nav {
     .nav-link,
     .edit-button,
     .new-message-button,
-    .new-message-form-submit {
+    .message-form-submit,
+    .delete-message-button {
         transition: transform 0.1s ease-in-out;
     }
 
     .nav-link:hover,
     .edit-button:hover,
     .new-message-button:hover,
-    .new-message-form-submit:hover {
+    .message-form-submit:hover,
+    .delete-message-button:hover {
         transform: scale(1.05);
     }
 
@@ -398,7 +427,7 @@ nav {
         padding: 7px 10px;
     }
 
-    .new-message-page form .form-section label {
+    .message-page form .form-section label {
         font-size: calc(0.7*var(--rvv));
     }
 }

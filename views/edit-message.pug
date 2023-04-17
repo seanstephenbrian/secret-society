@@ -2,34 +2,37 @@ extends layout
 
 block content 
 
-    h1 Edit a Message
 
-    if message 
-        h2 Editing #{message.title}
-        p Click here to 
-            a(href=(`/delete/` + message.id)) delete this message
-            | .
-        form.edit-message(action='/edit' method='POST') 
-            input(name='id' id='id' type='hidden' value=(message.id))
-            .form-section
-                label(for='title') Title:
-                input(
-                    name='title' 
-                    type='text' 
-                    required
-                    value=(message.title)
-                )
-            .form-section 
-                label(for='body') Message: 
-                textarea(name='body')=message.body
-            input(type='submit')
+    .message-page
+        h1 Edit a Message
 
-    if errors
-        h2 Unable the process the request.
-        if (errors.length === 1)
-            h3 Please correct this error:
-        else
-            h3 Please correct the following errors:
-        ul(class='errors')
-            each error in errors
-                li.error #{error.msg}
+        if message 
+            if errors
+                section.message-form-errors
+                    p Unable the process the request.
+                    if (errors.length === 1)
+                        p Please correct this error:
+                    else
+                        p Please correct the following errors:
+                    ul(class='errors')
+                        each error in errors
+                            li.error #{error.msg}
+            form.edit-message(action='/edit' method='POST') 
+                h2.message-form-title.edit-message-form-title Editing "#{message.title}"
+                a(class='delete-message-button' href=(`/delete/` + message.id)) Delete
+                input(name='id' id='id' type='hidden' value=(message.id))
+                .form-section
+                    label(for='title') Title:
+                    input(
+                        class='title-input'
+                        name='title' 
+                        type='text' 
+                        required
+                        value=(message.title)
+                    )
+                .form-section 
+                    label(for='body') Message: 
+                    textarea(class='body-input' name='body')=message.body
+                input(class='message-form-submit' type='submit')
+
+        

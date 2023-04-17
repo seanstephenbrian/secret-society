@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    .new-message-page
+    .message-page
         h1 Post a New Message
 
         if currentUser && !currentUser.member
@@ -41,7 +41,7 @@ block content
                 .form-section 
                     label(for='body') Message: 
                     textarea(class='body-input' name='body')=req.body
-                input(class='new-message-form-submit' type='submit')
+                input(class='message-form-submit' type='submit')
 
         else if !currentUser
             p Please 
