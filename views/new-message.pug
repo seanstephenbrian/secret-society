@@ -6,13 +6,12 @@ block content
         h1 Post a New Message
 
         if currentUser && !currentUser.member
-            p Hello, #{currentUser.firstName}. 
-            p You can post a new message with the form below, but remember that you 
-                | must be an initiated member of the Secret Society to view the complete information 
-                | about other users' messages.
-            p If you know the secret code, you can attempt to 
-                a(href='/become-a-member/') become a member
-                | .
+            .uninitiated-message
+                p You can make a new post using the form below, but remember that you 
+                    | must be an initiated member of the Secret Society to view message author/date details.
+                p If you know the secret code, you can attempt to 
+                    a(class='inline-link' href='/become-a-member/') become a member
+                    | .
 
         if errors
             section.message-form-errors
@@ -44,7 +43,7 @@ block content
                 input(class='message-form-submit' type='submit')
 
         else if !currentUser
-            p Please 
+            p.please-log-in Please 
                 a(href='/log-in/') log in
                 |  before continuing.
     

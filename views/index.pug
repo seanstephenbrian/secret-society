@@ -1,24 +1,23 @@
 extends layout
 
 block content
-    if currentUser
-        section.intro
-            p Welcome back, 
-                span.username #{currentUser.firstName + ' ' + currentUser.lastName}.
-            if !currentUser.member
-                p You are not yet an initiate of the Society.
-                p To view the complete author and date information for the messages below, you must become a full member.
-                | Click the link above the begin the process.
-
-    else
-        section.intro
-            p.welcome Welcome to the Secret Society.
-            p If you're a returning user, please 
-                a(href='/log-in/') log in
-                |  to begin posting messages.
-            p First-time visitors can  
-                a(href='/sign-up/') sign up here
-                | .
+    .intro-container
+        if currentUser
+            section.intro
+                p Welcome back, 
+                    span.username #{currentUser.firstName + ' ' + currentUser.lastName}.
+                if !currentUser.member
+                    p You are not yet an initiate of the Society.
+                    p To view the complete author and date information for the messages below, you must become a full member.
+        else
+            section.intro
+                p.welcome Welcome to the Secret Society.
+                p If you're a returning user, please 
+                    a(href='/log-in/') log in
+                    |  to begin posting messages.
+                p First-time visitors can  
+                    a(href='/sign-up/') sign up here
+                    | .
 
     section.messages
         if currentUser && currentUser.member

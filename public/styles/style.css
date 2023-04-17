@@ -45,6 +45,16 @@ time, mark, audio, video {
     --transparent-white: #ffffffa4;
 }
 
+.inline-link {
+    color: var(--inline-link);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.inline-link:visited {
+    color: var(--inline-link);
+}
+
 html,
 body {
     min-height: 100vh;
@@ -121,18 +131,23 @@ nav {
     color: black;
 }
 
+.intro-container {
+    display: flex;
+    justify-content: center;
+}
+
 .intro {
+    width: 100%;
+    max-width: 750px;
     font-size: calc(0.6*var(--rvv));
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: calc(0.25*var(--rvv));
     margin: calc(0.3*var(--rvv)) 0 calc(0.5*var(--rvv));
 }
 
 .intro p {
-    text-align: center;
 }
 
 .intro p a {
@@ -259,7 +274,31 @@ nav {
 }
 
 .message-page h1 {
-    font-size: calc(var(--rvv));
+    font-size: calc(0.8*var(--rvv));
+}
+
+.uninitiated-message {
+    padding-top: 10px;
+    font-size: calc(0.6*var(--rvv));
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.please-log-in {
+    margin-top: 20px;
+    font-size: calc(0.6*var(--rvv));
+}
+
+.please-log-in a {
+    color: var(--inline-link);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.please-log-in a:visited {
+    color: var(--inline-link);
 }
 
 .delete-message-button {
