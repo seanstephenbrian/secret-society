@@ -14,6 +14,17 @@ block content
                 a(href='/become-a-member/') become a member
                 | .
 
+        if errors
+            section.message-form-errors
+                p Unable the process the request.
+                if (errors.length === 1)
+                    p Please correct this error:
+                else
+                    p Please correct the following errors:
+                ul(class='errors')
+                    each error in errors
+                        li.error #{error.msg}
+
         if currentUser
             form(action='' method='POST')
                 h2.message-form-title New Message
@@ -31,16 +42,6 @@ block content
                     label(for='body') Message: 
                     textarea(class='body-input' name='body')=req.body
                 input(class='new-message-form-submit' type='submit')
-        
-        if errors
-            h2 Unable the process the request.
-            if (errors.length === 1)
-                h3 Please correct this error:
-            else
-                h3 Please correct the following errors:
-            ul(class='errors')
-                each error in errors
-                    li.error #{error.msg}
 
         else if !currentUser
             p Please 
