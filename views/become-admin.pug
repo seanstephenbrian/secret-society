@@ -2,30 +2,32 @@ extends layout
 
 block content 
 
-    h1 Administrator Access
-    if currentUser 
-        if !currentUser.member
-            h2 Sorry, #{currentUser.firstName} - you are not yet an initiated member of the Society.
-            p Please complete your 
-                a(href='/become-a-member/') membership application
-                |  before attempting to become an administrator.
-        else if currentUser.member && !currentUser.admin
-            form(action='' method='POST')
-                label(for='code') Admin Code: 
-                input(name='code' id='code' type='password' required)
-                input(name='id' id='id' type='hidden' value=(currentUser.id))
-                input(type='submit')
-        else if currentUser.member && currentUser.admin 
-            h2 You are already a Secret Society admin.
-            p Click to 
-                a(href='/') go home
-                | .
+    .admin-access
+        h1 Gain Administrator Access
+        if currentUser 
+            if !currentUser.member
+                p Sorry, #{currentUser.firstName} - you are not yet an initiated member of the Society.
+                p Please complete your 
+                    a(class='inline-link' href='/become-a-member/') membership application
+                    |  before attempting to become an administrator.
+            else if currentUser.member && !currentUser.admin
+                form(class='password-form' action='' method='POST')
+                    .form-section
+                        label(for='code') Admin Code: 
+                        input(class='text-input' name='code' id='code' type='password' required)
+                    input(name='id' id='id' type='hidden' value=(currentUser.id))
+                    input(class='submit-button' type='submit')
+            else if currentUser.member && currentUser.admin 
+                p You are already a Secret Society admin.
+                p Click to 
+                    a(class='inline-link' href='/') go home
+                    | .
 
-    else 
-        h2 You are not a registered user.
-        p Before proceeding, you must first 
-            a(href='/sign-up') sign up
-            |  or 
-            a(href='/log-in') log in
-            | .
-        p You will then need to become a member of the Society before applying for admin privileges.
+        else 
+            p You are not a registered user.
+            p Before proceeding, you must first 
+                a(class='inline-link' href='/sign-up') sign up
+                |  or 
+                a(class='inline-link' href='/log-in') log in
+                | .
+            p You will then need to become a member of the Society before applying for admin privileges.

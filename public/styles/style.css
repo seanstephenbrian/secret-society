@@ -137,7 +137,8 @@ nav {
 }
 
 .intro {
-    width: 100%;
+    text-align: center;
+    width: 95%;
     max-width: 750px;
     font-size: calc(0.6*var(--rvv));
     display: flex;
@@ -426,6 +427,124 @@ nav {
     padding: 8px;
 }
 
+.delete-page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.5*var(--rvv));
+    max-width: 750px;
+}
+
+.delete-title {
+    text-align: center;
+    font-size: calc(0.8*var(--rvv));
+    font-weight: 700;
+}
+
+.delete-confirm {
+    font-size: calc(0.6*var(--rvv));
+}
+
+.confirm-delete-button {
+    cursor: pointer;
+    font-family: 'Cormorant';
+    font-size: calc(0.8*var(--rvv));
+    text-decoration: none;
+    color: black;
+    background-color: var(--delete-red);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+}
+
+.delete-page-error {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5*var(--rvv));
+}
+
+.delete-page-error h1 {
+    font-size: calc(0.8*var(--rvv));
+}
+
+.delete-page-error p {
+    font-size: calc(0.7*var(--rvv));
+}
+
+.admin-access {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.5*var(--rvv));
+    max-width: 750px;
+}
+
+.admin-access h1 {
+    text-align: center;
+    font-size: calc(0.8*var(--rvv));
+}
+
+.admin-access p {
+    text-align: center;
+    font-size: calc(0.6*var(--rvv));
+}
+
+.password-form {
+    align-self: center;
+    width: 90%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.password-form label {
+    font-size: calc(0.6*var(--rvv));
+    margin-right: 10px;
+}
+
+.password-form .text-input {
+    width: 300px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant';
+    font-size: 1.5rem;
+    border-radius: 3px;
+    background-color: #ffffffe0;
+}
+
+.password-form .submit-button {
+    margin-top: 30px;
+    width: fit-content;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--new-message-button);
+    font-family: 'Cormorant';
+    font-size: calc(0.6*var(--rvv));
+    padding: 8px;
+}
+
+.log-in-page {
+    margin: 0 auto;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.log-in-page h1 {
+    font-size: calc(0.8*var(--rvv));
+    margin-bottom: 30px;
+}
+
 /* desktop styles: */
 
 @media only screen and (min-width: 500px) {
@@ -442,7 +561,8 @@ nav {
     .edit-button,
     .new-message-button,
     .message-form-submit,
-    .delete-message-button {
+    .delete-message-button,
+    .confirm-delete-button {
         transition: transform 0.1s ease-in-out;
     }
 
@@ -450,7 +570,8 @@ nav {
     .edit-button:hover,
     .new-message-button:hover,
     .message-form-submit:hover,
-    .delete-message-button:hover {
+    .delete-message-button:hover,
+    .confirm-delete-button:hover {
         transform: scale(1.05);
     }
 

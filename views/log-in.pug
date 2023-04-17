@@ -1,30 +1,31 @@
 extends layout 
 
 block content 
-    h1 Log In
-    if error 
-        p=error
-    if currentUser 
-        p You're already logged in, #{currentUser.firstName}.
-        p Click 
-            a(href='log-out/') here
-            |  to log out.
-    else
-        form(action='' method='POST')
-            .form-section
+    .log-in-page
+        h1 Log In
+        if error 
+            p=error
+        if currentUser 
+            p You're already logged in, #{currentUser.firstName}.
+            p Click 
+                a(href='log-out/') here
+                |  to log out.
+        else
+            form(class='password-form' action='' method='POST')
                 label(for='username') Email: 
                 input(
+                    class='text-input'
                     name='username'
                     id='username'
                     type='email'
                     required
                 )
-            .form-section
                 label(for='password') Password:
                 input(
+                    class='text-input'
                     name='password'
                     id='password'
                     type='password'
                     required
                 )
-            input(type='submit')
+                input(class='submit-button' type='submit')
