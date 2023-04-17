@@ -16,10 +16,12 @@ block content
 
         if currentUser
             form(action='' method='POST')
+                h2.message-form-title New Message
                 input(name='author' id='author' type='hidden' value=(currentUser.id))
                 .form-section
                     label(for='title') Title:
                     input(
+                        class='title-input'
                         name='title' 
                         type='text' 
                         required
@@ -27,8 +29,8 @@ block content
                     )
                 .form-section 
                     label(for='body') Message: 
-                    textarea(name='body')=req.body
-                input(type='submit')
+                    textarea(class='body-input' name='body')=req.body
+                input(class='new-message-form-submit' type='submit')
         
         if errors
             h2 Unable the process the request.

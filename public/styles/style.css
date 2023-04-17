@@ -38,7 +38,7 @@ time, mark, audio, video {
     /* colors: */
     --green: #3d5a2c;
     --inline-link: #396f91;
-    --new-message-button: #6296b7a5;
+    --new-message-button: #6ca6c9a5;
     --red: #824E4A;
     --site-bg: #fcdaba;
     --transparent-white: #ffffffa4;
@@ -275,6 +275,13 @@ nav {
     gap: 20px;
 }
 
+.message-form-title {
+    font-size: calc(0.8*var(--rvv));
+    font-weight: 500;
+    text-decoration: underline;
+    margin-right: auto;
+}
+
 .new-message-page form .form-section {
     width: 100%;
     display: flex;
@@ -284,6 +291,37 @@ nav {
 
 .new-message-page form .form-section label {
     font-size: calc(0.8*var(--rvv));
+}
+
+.new-message-page form .form-section input,
+.new-message-page form .form-section textarea {
+    border: none;
+    outline: none;
+    font-family: 'Cormorant';
+    font-size: 1.5rem;
+    border-radius: 3px;
+    background-color: #ffffffe0;
+}
+
+.title-input {
+    padding: 0 10px;
+    height: 3rem;
+}
+
+.body-input {
+    padding: 10px;
+    height: 8rem;
+    resize: none;
+}
+
+.new-message-form-submit {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--new-message-button);
+    font-family: 'Cormorant';
+    font-size: calc(0.8*var(--rvv));
+    padding: 8px;
 }
 
 /* desktop styles: */
@@ -300,13 +338,15 @@ nav {
 
     .nav-link,
     .edit-button,
-    .new-message-button {
+    .new-message-button,
+    .new-message-form-submit {
         transition: transform 0.1s ease-in-out;
     }
 
     .nav-link:hover,
     .edit-button:hover,
-    .new-message-button:hover {
+    .new-message-button:hover,
+    .new-message-form-submit:hover {
         transform: scale(1.05);
     }
 
