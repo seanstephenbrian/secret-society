@@ -2,7 +2,7 @@ extends layout
 
 block content 
 
-    .message-page
+    .page-wrapper
         h1 Edit a Message
 
         if message 
@@ -17,7 +17,7 @@ block content
                             li.error #{error.msg}
             form.edit-message(action='/edit' method='POST') 
                 h2.message-form-title.edit-message-form-title Editing "#{message.title}"
-                a(class='delete-message-button' href=(`/delete/` + message.id)) Delete
+                a(class='delete-message-button button' href=(`/delete/` + message.id)) Delete
                 input(name='id' id='id' type='hidden' value=(message.id))
                 .form-section
                     label(for='title') Title:
@@ -31,6 +31,6 @@ block content
                 .form-section 
                     label(for='body') Message: 
                     textarea(class='body-input' name='body')=message.body
-                input(class='message-form-submit' type='submit')
+                input(class='edit-message-submit' type='submit')
 
         

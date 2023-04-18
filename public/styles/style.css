@@ -36,10 +36,10 @@ time, mark, audio, video {
     --rvv: calc(1rem + 1vmin + 1vmax);
 
     /* colors: */
+    --blue-button: #6ca6c9a5;
     --delete-red: #f9877f;
     --green: #3d5a2c;
     --inline-link: #396f91;
-    --new-message-button: #6ca6c9a5;
     --red: #824E4A;
     --site-bg: #fcdaba;
     --transparent-white: #ffffffa4;
@@ -53,6 +53,102 @@ time, mark, audio, video {
 
 .inline-link:visited {
     color: var(--inline-link);
+}
+
+.blue-button {
+    cursor: pointer;
+    margin: 10px 0;
+    border: none;
+    font-family: 'Cormorant';
+    font-size: calc(0.7*var(--rvv));
+    background-color: var(--blue-button);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+main {
+    margin: 0 auto;
+    width: 95%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.25*var(--rvv));
+}
+
+main h1 {
+    font-size: calc(0.8*var(--rvv));
+}
+
+main h1.large-heading {
+    font-size: calc(1*var(--rvv));
+}
+
+main p {
+    font-size: calc(0.6*var(--rvv));
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+form {
+    background-color: var(--transparent-white);
+}
+
+form .form-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label {
+    font-size: calc(0.8*var(--rvv));
+}
+
+form input[type='text'],
+form input[type='password'],
+form textarea {
+    padding: 0 10px;
+    height: 3rem;
+    border: none;
+    outline: none;
+    font-family: 'Cormorant';
+    font-size: 1.5rem;
+    border-radius: 3px;
+    background-color: #ffffffe0;
+}
+
+form textarea {
+    padding: 10px;
+    height: 8rem;
+    resize: none;
+}
+
+form input[type='submit'] {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--blue-button);
+    font-family: 'Cormorant';
+    font-size: calc(0.8*var(--rvv));
+    padding: 8px;
+}
+
+.button {
+    color: black;
+    text-decoration: none;
+    border: none;
+}
+
+.button:visited {
+    color: black;
 }
 
 html,
@@ -90,11 +186,11 @@ header {
     text-align: center;
 }
 
-.site-title .green {
+.green {
     color: var(--green);
 }
 
-.site-title .red {
+.red {
     color: var(--red);
 }
 
@@ -132,37 +228,17 @@ nav {
 }
 
 .intro-container {
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    
 }
 
 .intro {
     text-align: center;
-    width: 95%;
-    max-width: 750px;
-    font-size: calc(0.6*var(--rvv));
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: calc(0.25*var(--rvv));
+    gap: calc(0.3*var(--rvv));
     margin: calc(0.3*var(--rvv)) 0 calc(0.5*var(--rvv));
-}
-
-.intro p {
-}
-
-.intro p a {
-    color: var(--inline-link);
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.intro p a:visited {
-    color: var(--inline-link);
-}
-
-.welcome {
-    font-size: calc(0.8*var(--rvv));
 }
 
 .username {
@@ -170,6 +246,7 @@ nav {
 }
 
 .messages {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -177,38 +254,11 @@ nav {
 }
 
 .messages-top-matter {
-    width: 90%;
-    max-width: 800px;
+    width: calc(90% + 40px);
+    max-width: 750px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.messages-heading {
-    width: 50%;
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: calc(var(--rvv));
-    display: flex;
-    justify-content: center;
-}
-
-.messages-top-matter .messages-heading {
-    width: fit-content;
-    margin: 0;
-    margin-right: auto;
-    justify-content: flex-start;
-}
-
-.new-message-button {
-    cursor: pointer;
-    margin: 10px 0;
-    border: none;
-    font-family: 'Cormorant';
-    font-size: calc(0.7*var(--rvv));
-    background-color: var(--new-message-button);
-    padding: 5px 10px;
-    border-radius: 10px;
 }
 
 .messages-container {
@@ -232,7 +282,6 @@ nav {
 }
 
 .message-title {
-    font-size: calc(0.8*var(--rvv));
     font-weight: 500;
 }
 
@@ -258,79 +307,35 @@ nav {
     padding: 5px;
     border-radius: 5px;
     font-size: calc(0.5*var(--rvv));
-    color: black;
-    text-decoration: none;
     background-color: #ffb7b296;
-}
-
-.edit-button:visited {
-    color: black;
-}
-
-.message-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.message-page h1 {
-    font-size: calc(0.8*var(--rvv));
 }
 
 .uninitiated-message {
     padding-top: 10px;
-    font-size: calc(0.6*var(--rvv));
-    max-width: 750px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     gap: 20px;
 }
 
 .please-log-in {
     margin-top: 20px;
-    font-size: calc(0.6*var(--rvv));
-}
-
-.please-log-in a {
-    color: var(--inline-link);
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.please-log-in a:visited {
-    color: var(--inline-link);
-}
-
-.delete-message-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: calc(0.6*var(--rvv));
-    text-decoration: none;
-    color: black;
-    background-color: var(--delete-red);
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
-}
-
-.delete-message-button:visited {
-    color: black;
 }
 
 .message-form-errors {
-    padding: 20px 0 0;
-    width: 80%;
-    max-width: 500px;
+    margin: 20px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #7b201a49;
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
-}
-
-.message-form-errors p {
-    font-size: calc(0.6*var(--rvv));
+    text-align: center;
 }
 
 .message-form-errors .errors {
@@ -355,18 +360,22 @@ nav {
     background-size: contain;
 }
 
-.message-page form {
+.new-message,
+.edit-message {
     margin-top: 20px;
     padding: 20px 30px;
     width: 80%;
     max-width: 500px;
     border-radius: 7px;
-    background-color: var(--transparent-white);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.edit-message {
+    position: relative;
 }
 
 .message-form-title {
@@ -376,83 +385,33 @@ nav {
     margin-right: auto;
 }
 
-.edit-message {
-    position: relative;
-}
-
 .edit-message-form-title {
     text-decoration: none;
     max-width: 80%;
 }
 
-.message-page form .form-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.message-page form .form-section label {
-    font-size: calc(0.8*var(--rvv));
-}
-
-.message-page form .form-section input,
-.message-page form .form-section textarea {
-    border: none;
-    outline: none;
-    font-family: 'Cormorant';
-    font-size: 1.5rem;
+.delete-message-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: calc(0.6*var(--rvv));
+    text-decoration: none;
+    background-color: var(--delete-red);
+    padding: 5px;
     border-radius: 3px;
-    background-color: #ffffffe0;
-}
-
-.title-input {
-    padding: 0 10px;
-    height: 3rem;
-}
-
-.body-input {
-    padding: 10px;
-    height: 8rem;
-    resize: none;
-}
-
-.message-form-submit {
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--new-message-button);
-    font-family: 'Cormorant';
-    font-size: calc(0.8*var(--rvv));
-    padding: 8px;
 }
 
 .delete-page {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: calc(0.5*var(--rvv));
-    max-width: 750px;
 }
 
 .delete-title {
     text-align: center;
-    font-size: calc(0.8*var(--rvv));
     font-weight: 700;
 }
 
-.delete-confirm {
-    font-size: calc(0.6*var(--rvv));
-}
-
-.confirm-delete-button {
-    cursor: pointer;
-    font-family: 'Cormorant';
+form input[type='submit'].confirm-delete-button {
     font-size: calc(0.8*var(--rvv));
-    text-decoration: none;
-    color: black;
     background-color: var(--delete-red);
     padding: 5px 10px;
     border: none;
@@ -465,13 +424,7 @@ nav {
     gap: calc(0.5*var(--rvv));
 }
 
-.delete-page-error h1 {
-    font-size: calc(0.8*var(--rvv));
-}
-
-.delete-page-error p {
-    font-size: calc(0.7*var(--rvv));
-}
+/* LEFT OFF HERE */
 
 .admin-access {
     margin: 0 auto;
@@ -530,7 +483,7 @@ nav {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background-color: var(--new-message-button);
+    background-color: var(--blue-button);
     font-family: 'Cormorant';
     font-size: calc(0.6*var(--rvv));
     padding: 8px;
@@ -636,20 +589,14 @@ nav {
         padding: calc(1*var(--rvv));
     }
 
-    .nav-link,
-    .edit-button,
-    .new-message-button,
-    .message-form-submit,
-    .delete-message-button,
+    .button,
+    form input[type='submit'],
     .confirm-delete-button {
         transition: transform 0.1s ease-in-out;
     }
 
-    .nav-link:hover,
-    .edit-button:hover,
-    .new-message-button:hover,
-    .message-form-submit:hover,
-    .delete-message-button:hover,
+    .button:hover,
+    form input[type='submit']:hover,
     .confirm-delete-button:hover {
         transform: scale(1.05);
     }

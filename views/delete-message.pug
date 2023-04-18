@@ -2,13 +2,13 @@ extends layout
 
 block content 
 
-    .delete-page
+    .page-wrapper.delete-page
         if message && currentUser && currentUser.admin
             h1.delete-title Deleting '#{message.title}'.
-            p.delete-confirm Are you sure you want to proceed?
+            p Are you sure you want to proceed?
             form(action='/delete' method='POST')
                 input(type='hidden' name='id' id='id' value=(message.id))
-                input(class='confirm-delete-button' type='submit' value='Delete')
+                input(class='confirm-delete-button button' type='submit' value='Delete')
 
         else 
             .delete-page-error

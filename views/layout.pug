@@ -25,20 +25,21 @@ html
             nav
                 ul.nav-links
                     if currentUser 
-                        li.nav-link
+                        li.nav-link.button
                             a(href='/') Go Home
                         if !currentUser.member
-                            li.nav-link 
+                            li.nav-link.button
                                 a(href='/become-a-member/') Become a Member 
                         if currentUser.member && !currentUser.admin
-                            li.nav-link
+                            li.nav-link.button
                                 a(href='/become-admin') Become an Admin
-                        li.nav-link
+                        li.nav-link.button
                             a(href='/log-out/') Log Out 
                     else 
-                        li.nav-link
+                        li.nav-link.button
                             a(href='/sign-up/') Sign Up
-                        li.nav-link
+                        li.nav-link.button
                             a(href='/log-in/') Log In
 
-        block content
+        main
+            block content
