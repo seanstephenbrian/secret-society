@@ -2,9 +2,15 @@ extends layout
 
 block content 
     h1 You entered the wrong code.
-    p If you believe this was a mistake, you can 
-        a(href='/become-a-member/') try again
-        | .
+    if page
+        if (page === 'member')
+            p If you believe this was a mistake, you can 
+                a(class='inline-link' href='/become-a-member/') try again
+                | .
+        else if (page === 'admin')
+            p If you believe this was a mistake, you can 
+                    a(class='inline-link' href='/become-admin/') try again
+                    | .
     p Otherwise, 
-        a(href='/') return home
+        a(class='inline-link' href='/') return home
         | .

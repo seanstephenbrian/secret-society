@@ -20,7 +20,7 @@ router.post('/', async function(req, res, next) {
             return next(err);
         }
     } else {
-        res.render('wrong-code');
+        res.render('wrong-code', { page: 'admin' });
     }
 }
 );

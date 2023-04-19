@@ -1,20 +1,18 @@
 extends layout 
 
 block content 
-    .sign-up-page
-        .already-signed-up
-            if currentUser && !currentUser.member
-                p You've already signed up.
-                p Click 
-                    a(class='inline-link' href='/become-a-member/') here
-                    |  to become a member.
+    .page-wrapper
+        if currentUser && !currentUser.member
+            p You've already signed up.
+            p Click 
+                a(class='inline-link' href='/become-a-member/') here
+                |  to become a member.
         if currentUser && currentUser.member
             h1 You're already a member!
             p
                 a(class='inline-link' href='/') Go home
                 |  to post messages to other Society members.
         else if !currentUser
-            h1 Sign Up
             if errors
                 section.sign-up-form-errors.message-form-errors
                     if (errors.length === 1)
@@ -24,7 +22,8 @@ block content
                     ul(class='errors')
                         each error in errors
                             li.error #{error.msg}
-            form(class='sign-up-form' action='' method='POST')
+            form(action='' method='POST')
+                h1 Sign Up
                 label(for='firstName') First Name: 
                 input(
                     class='text-input'

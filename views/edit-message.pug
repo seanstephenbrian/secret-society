@@ -15,7 +15,7 @@ block content
                     ul(class='errors')
                         each error in errors
                             li.error #{error.msg}
-            form.edit-message(action='/edit' method='POST') 
+            form(class='message-form edit-message' action='/edit' method='POST') 
                 h2.message-form-title.edit-message-form-title Editing "#{message.title}"
                 a(class='delete-message-button button' href=(`/delete/` + message.id)) Delete
                 input(name='id' id='id' type='hidden' value=(message.id))

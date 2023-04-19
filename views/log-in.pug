@@ -1,7 +1,7 @@
 extends layout 
 
 block content 
-    .log-in-page
+    .page-wrapper
         h1 Log In
         if error 
             section.error
@@ -12,7 +12,7 @@ block content
                 a(class='inline-link' href='log-out/') here
                 |  to log out.
         else
-            form(class='password-form' action='' method='POST')
+            form(action='' method='POST')
                 label(for='username') Email: 
                 input(
                     class='text-input'

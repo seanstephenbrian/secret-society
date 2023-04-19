@@ -66,6 +66,10 @@ time, mark, audio, video {
     border-radius: 10px;
 }
 
+.center-text {
+    text-align: center;
+}
+
 main {
     margin: 0 auto;
     width: 95%;
@@ -90,32 +94,45 @@ main p {
 }
 
 .page-wrapper {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: calc(0.2*var(--rvv));
     width: 100%;
 }
 
 form {
-    background-color: var(--transparent-white);
+    width: 100%;
+    min-width: 300px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+form h1 {
+    margin: 0 auto 15px;
 }
 
 form .form-section {
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 form label {
-    font-size: calc(0.8*var(--rvv));
+    font-size: calc(0.7*var(--rvv));
+    margin: 0 20px 7px;
 }
 
 form input[type='text'],
 form input[type='password'],
+form input[type='email'],
 form textarea {
-    padding: 0 10px;
+    margin: 0 20px 10px;
+    padding: 2px 10px;
     height: 3rem;
     border: none;
     outline: none;
@@ -132,12 +149,14 @@ form textarea {
 }
 
 form input[type='submit'] {
+    width: fit-content;
+    margin: 10px auto 0;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     background-color: var(--blue-button);
     font-family: 'Cormorant';
-    font-size: calc(0.8*var(--rvv));
+    font-size: calc(0.7*var(--rvv));
     padding: 8px;
 }
 
@@ -229,7 +248,6 @@ nav {
 
 .intro-container {
     width: 100%;
-    
 }
 
 .intro {
@@ -310,16 +328,6 @@ nav {
     background-color: #ffb7b296;
 }
 
-.uninitiated-message {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-}
-
 .please-log-in {
     margin-top: 20px;
 }
@@ -360,18 +368,20 @@ nav {
     background-size: contain;
 }
 
-.new-message,
-.edit-message {
+.message-form {
+    background-color: var(--transparent-white);
     margin-top: 20px;
-    padding: 20px 30px;
-    width: 80%;
-    max-width: 500px;
+    padding: 20px 0;
     border-radius: 7px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.message-form .form-section {
+    width: 100%;
 }
 
 .edit-message {
@@ -382,12 +392,14 @@ nav {
     font-size: calc(0.8*var(--rvv));
     font-weight: 500;
     text-decoration: underline;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .edit-message-form-title {
     text-decoration: none;
     max-width: 80%;
+    margin-left: 20px;
+    margin-right: auto;
 }
 
 .delete-message-button {
@@ -399,6 +411,10 @@ nav {
     background-color: var(--delete-red);
     padding: 5px;
     border-radius: 3px;
+}
+
+form input[type='submit'].message-form-submit {
+    margin-top: 0;
 }
 
 .delete-page {
@@ -424,69 +440,9 @@ form input[type='submit'].confirm-delete-button {
     gap: calc(0.5*var(--rvv));
 }
 
-/* LEFT OFF HERE */
-
-.admin-access {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.become-admin {
     gap: calc(0.5*var(--rvv));
-    max-width: 750px;
-}
-
-.admin-access h1 {
     text-align: center;
-    font-size: calc(0.8*var(--rvv));
-}
-
-.admin-access p {
-    text-align: center;
-    font-size: calc(0.6*var(--rvv));
-}
-
-.password-form,
-.sign-up-form {
-    align-self: center;
-    max-width: 750px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.password-form label,
-.sign-up-form label {
-    width: 100%;
-    text-align: start;
-    font-size: calc(0.6*var(--rvv));
-}
-
-.password-form .text-input,
-.sign-up-form .text-input {
-    width: 300px;
-    padding: 5px;
-    border: none;
-    outline: none;
-    font-family: 'Cormorant';
-    font-size: calc(0.6*var(--rvv));
-    border-radius: 3px;
-    background-color: #ffffffe0;
-}
-
-.password-form .submit-button,
-.sign-up-form .submit-button {
-    margin-top: 30px;
-    width: fit-content;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--blue-button);
-    font-family: 'Cormorant';
-    font-size: calc(0.6*var(--rvv));
-    padding: 8px;
 }
 
 .log-in-page {
@@ -506,77 +462,6 @@ form input[type='submit'].confirm-delete-button {
     font-size: calc(0.6*var(--rvv));
 }
 
-.become-member-page {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: calc(0.5*var(--rvv));
-    max-width: 750px;
-    text-align: center;
-}
-
-.become-member-page h1 {
-    font-size: calc(0.8*var(--rvv));
-}
-
-.become-member-page p {
-    font-size: calc(0.6*var(--rvv));
-}
-
-.become-member-page form {
-    display: flex;
-    flex-direction: column;
-}
-
-.become-member-page .password-form .submit-button {
-    margin-top: 10px;
-}
-
-.become-member-page.new-member-page {
-    text-align: center;
-}
-
-.sign-up-page {
-    max-width: 750px;
-    margin: 0 auto;
-}
-
-.already-signed-up {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
-
-.sign-up-page h1 {
-    font-size: calc(0.8*var(--rvv));
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.sign-up-page p {
-    font-size: calc(0.6*var(--rvv));
-}
-
-.sign-up-page form {
-    display: flex;
-    flex-direction: column;
-}
-
-.sign-up-page form input {
-    margin-bottom: 3px;
-}
-
-.sign-up-page form .submit-button {
-    margin-top: 10px;
-}
-
-.sign-up-page .sign-up-form-errors.message-form-errors {
-    margin-bottom: 20px;
-}
-
 /* desktop styles: */
 
 @media only screen and (min-width: 500px) {
@@ -589,16 +474,8 @@ form input[type='submit'].confirm-delete-button {
         padding: calc(1*var(--rvv));
     }
 
-    .button,
-    form input[type='submit'],
-    .confirm-delete-button {
-        transition: transform 0.1s ease-in-out;
-    }
-
-    .button:hover,
-    form input[type='submit']:hover,
-    .confirm-delete-button:hover {
-        transform: scale(1.05);
+    form:not(.message-form) {
+        max-width: 500px;
     }
 
     .nav-link {
@@ -613,8 +490,16 @@ form input[type='submit'].confirm-delete-button {
         padding: 7px 10px;
     }
 
-    .message-page form .form-section label {
-        font-size: calc(0.7*var(--rvv));
+    .button,
+    form input[type='submit'],
+    .confirm-delete-button {
+        transition: transform 0.1s ease-in-out;
+    }
+
+    .button:hover,
+    form input[type='submit']:hover,
+    .confirm-delete-button:hover {
+        transform: scale(1.05);
     }
 }
 
