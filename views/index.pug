@@ -28,13 +28,16 @@ block content
         else
             h1.large-heading Messages
         .messages-container
-            each message in messages
-                .message
-                    h1.message-title #{message.title}
-                    if currentUser && currentUser.member
-                        .author-date
-                            .message-author #{message.author.firstName} #{message.author.lastName}
-                            .message-date #{message.date}
-                    p.message-body #{message.body}
-                    if currentUser && currentUser.admin 
-                        a(class='edit-button button' href=(`edit/` + message.id)) Edit
+            if (messages.length > 0)
+                each message in messages
+                    .message
+                        h1.message-title #{message.title}
+                        if currentUser && currentUser.member
+                            .author-date
+                                .message-author #{message.author.firstName} #{message.author.lastName}
+                                .message-date #{message.date}
+                        p.message-body #{message.body}
+                        if currentUser && currentUser.admin 
+                            a(class='edit-button button' href=(`edit/` + message.id)) Edit
+            else
+                p No messages to display!
