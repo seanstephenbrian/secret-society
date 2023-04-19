@@ -36,13 +36,13 @@ time, mark, audio, video {
     --rvv: calc(1rem + 1vmin + 1vmax);
 
     /* colors: */
-    --blue-button: #6ca6c9a5;
+    --blue-button: #6ca5c9cd;
     --delete-red: #f9877f;
     --green: #3d5a2c;
     --inline-link: #396f91;
     --red: #824E4A;
     --site-bg: #fcdaba;
-    --transparent-white: #ffffffa4;
+    --transparent-white: #ffffffc9;
 }
 
 .inline-link {
@@ -259,6 +259,7 @@ form textarea {
 }
 
 form input[type='submit'] {
+    color: black;
     width: fit-content;
     margin: 10px auto 0;
     cursor: pointer;
