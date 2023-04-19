@@ -70,6 +70,114 @@ time, mark, audio, video {
     text-align: center;
 }
 
+.background {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.left-graphic {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 7vh;
+    height: 100vh;
+    background-color: white;
+}
+
+.right-graphic {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 7vh;
+    height: 100vh;
+    transform: rotate(180deg);
+}
+
+.red-circle {
+    background-color: var(--red);
+}
+
+.green-circle {
+    background-color: var(--green);
+}
+
+.circle-1 {
+    clip-path: circle(3vh at 3.2vh 0vh);
+}
+
+.circle-2 {
+    clip-path: circle(3vh at 0 6vh);
+}
+
+.circle-3 {
+    clip-path: circle(3vh at 3.2vh 12vh);
+}
+
+.circle-4 {
+    clip-path: circle(3vh at 0 18vh);
+}
+
+.circle-5 {
+    clip-path: circle(3vh at 3.2vh 24vh);
+}
+
+.circle-6 {
+    clip-path: circle(3vh at 0 30vh);
+}
+
+.circle-7 {
+    clip-path: circle(3vh at 3.2vh 36vh);
+}
+
+.circle-8 {
+    clip-path: circle(3vh at 0 42vh);
+}
+
+.circle-9 {
+    clip-path: circle(3vh at 3.2vh 48vh);
+}
+
+.circle-10 {
+    clip-path: circle(3vh at 0 54vh);
+}
+
+.circle-11 {
+    clip-path: circle(3vh at 3.2vh 60vh);
+}
+
+.circle-12 {
+    clip-path: circle(3vh at 0 66vh);
+}
+
+.circle-13 {
+    clip-path: circle(3vh at 3.2vh 72vh);
+}
+
+.circle-14 {
+    clip-path: circle(3vh at 0 78vh);
+}
+
+.circle-15 {
+    clip-path: circle(3vh at 3.2vh 84vh);
+}
+
+.circle-16 {
+    clip-path: circle(3vh at 0 90vh);
+}
+
+.circle-17 {
+    clip-path: circle(3vh at 3.2vh 96vh);
+}
+
+.circle-18 {
+    clip-path: circle(3vh at 0 102vh);
+}
+
 main {
     margin: 0 auto;
     width: 95%;

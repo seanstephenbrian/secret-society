@@ -32,5 +32,10 @@ block content
                     label(for='body') Message: 
                     textarea(class='body-input' name='body')=message.body
                 input(class='edit-message-submit' type='submit')
+        else
+            p Sorry, we've encountered an error.
+            p Please 
+                a(class='inline-link' href='/') return home
+                |  to try again.
 
         

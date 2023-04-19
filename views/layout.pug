@@ -5,6 +5,14 @@ html
         link(rel='stylesheet', href='/styles/style.css')
         meta(name='viewport' content='width=device-width, initial-scale=1')
     body
+        .background(aria-hidden='true')
+            - for (let i = 1; i < 19; i++)
+                if (i % 2 === 0)
+                    div(class=(`left-graphic red-circle circle-` + i))
+                    div(class=(`right-graphic green-circle circle-` + i))
+                else
+                    div(class=(`left-graphic green-circle circle-` + i))
+                    div(class=(`right-graphic red-circle circle-` + i))
         header 
             a(class='title-link' href='/')
                 h1.site-title

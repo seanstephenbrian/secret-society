@@ -11,7 +11,8 @@ router.get('/:id', function(req, res, next) {
             res.render('edit-message', { message: message });
         })
         .catch((err) => {
-            return next(err);
+            console.log(err);
+            res.render('edit-message');
         });
 });
 
