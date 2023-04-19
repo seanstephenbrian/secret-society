@@ -3,6 +3,7 @@ var path = require('path');
 require('dotenv').config();
 var createError = require('http-errors');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
@@ -11,7 +12,6 @@ var logger = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
 const bcrypt = require('bcryptjs');
-const flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 const adminRouter = require('./routes/become-admin');
@@ -75,7 +75,15 @@ passport.deserializeUser(async function(id, done) {
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000
+    }),
+    secret: "cats", 
+    resave: false,
+    saveUninitialized: true 
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
@@ -85,7 +93,6 @@ app.use(function(req, res, next) {
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
-app.use(flash());
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 
