@@ -396,7 +396,6 @@ nav {
 }
 
 .messages .large-heading {
-    background-color: var(--messages-title-bg);
     padding: 3px;
     border-radius: 3px;
 }
