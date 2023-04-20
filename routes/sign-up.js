@@ -49,11 +49,30 @@ router.post('/',
             .custom((value, { req }) => value === req.body.password)
             .withMessage('Password confirmation must match password.')
     ],
+    async (req, res, next) => {
+        try {
+            const user = await User.findOne({ email: req.body.email });
+            if (user) {
+                return res.render(
+                    'sign-up', 
+                    { 
+                        errors: [{ msg: 'Email is already in use - please sign up with a different email address.'}], 
+                        req: req.body 
+                    }
+                );
+            } else if (!user) {
+                return next();
+            }
+        } catch(err) {
+            return next(err);
+        }
+    },
     (req, res, next) => {
 
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
+            console.log(errors.array());
             return res.render('sign-up', { errors: errors.array(), req: req.body });
         }
 
