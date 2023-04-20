@@ -471,7 +471,7 @@ nav {
     margin-top: 20px;
 }
 
-.message-form-errors {
+.form-errors {
     margin: 20px 0;
     border: 1px solid black;
     border-radius: 5px;
@@ -485,26 +485,16 @@ nav {
     text-align: center;
 }
 
-.message-form-errors .errors {
+.form-errors .errors {
     padding-left: 10px;
-    list-style: none;
 }
 
-.message-form-errors .error {
+.form-errors .error {
     padding-left: 10px;
     font-size: calc(0.5*var(--rvv));
     font-weight: 500;
     display: flex;
     align-items: center;
-}
-
-.message-form-errors .error::before {
-    content: '';
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    background-image: url('/images/error.svg');
-    background-size: contain;
 }
 
 .message-form {

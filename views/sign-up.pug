@@ -14,14 +14,14 @@ block content
                 |  to post messages to other Society members.
         else if !currentUser
             if errors
-                section.sign-up-form-errors.message-form-errors
+                section.sign-up-form-errors.form-errors
                     if (errors.length === 1)
                         p Please correct this error:
                     else
                         p Please correct the following errors:
                     ul(class='errors')
                         each error in errors
-                            li.error #{error.msg}
+                            li.error -#{error.msg}
             form(action='' method='POST')
                 h1 Sign Up
                 label(for='firstName') First Name: 

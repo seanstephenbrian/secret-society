@@ -7,14 +7,14 @@ block content
 
         if message 
             if errors
-                section.message-form-errors
+                section.form-errors
                     if (errors.length === 1)
                         p Please correct this error:
                     else
                         p Please correct the following errors:
                     ul(class='errors')
                         each error in errors
-                            li.error #{error.msg}
+                            li.error -#{error.msg}
             form(class='message-form edit-message' action='/edit' method='POST') 
                 h2.message-form-title.edit-message-form-title Editing "#{message.title}"
                 a(class='delete-message-button button' href=(`/delete/` + message.id)) Delete

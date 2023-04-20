@@ -13,7 +13,7 @@ block content
                 | .
 
         if errors
-            section.message-form-errors
+            section.form-errors
                 p Unable the process the request.
                 if (errors.length === 1)
                     p Please correct this error:
@@ -21,7 +21,7 @@ block content
                     p Please correct the following errors:
                 ul(class='errors')
                     each error in errors
-                        li.error #{error.msg}
+                        li.error -#{error.msg}
 
         if currentUser
             form(class='message-form new-message' action='' method='POST')
