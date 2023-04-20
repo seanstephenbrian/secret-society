@@ -6,8 +6,8 @@ const Message = require('../models/message');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     Message.find({}, 'message')
-        .sort({ timestamp: 1 })
-        .populate('author title timestamp body')
+        .sort({ timestamp: -1 })
+        .populate('author title timestamp body pinned')
         .then((message_list) => {
             res.render(
                 'index', 

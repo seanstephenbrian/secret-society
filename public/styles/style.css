@@ -40,6 +40,7 @@ time, mark, audio, video {
     --delete-red: #f9877f;
     --green: #3d5a2c;
     --inline-link: #396f91;
+    --messages-title-bg: #ffffff9c;
     --red: #824E4A;
     --site-bg: #fcdaba;
     --transparent-white: #ffffffc9;
@@ -79,7 +80,7 @@ time, mark, audio, video {
     height: 100vh;
     overflow: hidden;
     filter: sepia(20%);
-    opacity: 0.4;
+    opacity: 0.35;
 }
 
 .left-graphic {
@@ -382,6 +383,12 @@ nav {
     align-items: center;
 }
 
+.messages .large-heading {
+    background-color: var(--messages-title-bg);
+    padding: 3px;
+    border-radius: 3px;
+}
+
 .messages-top-matter {
     width: calc(90% + 40px);
     max-width: 750px;
@@ -410,8 +417,18 @@ nav {
     gap: 10px;
 }
 
+.message.pinned {
+    border: 2.5px solid var(--red);
+}
+
 .message-title {
     font-weight: 500;
+}
+
+.message.pinned .message-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .author-date {
@@ -615,6 +632,11 @@ form input[type='submit'].confirm-delete-button {
 }
 
 @media screen and (min-width: 918px) {
+    
+    .messages .large-heading {
+        background-color: transparent;
+    }
+
     .message {
         max-width: 800px;
     }

@@ -30,14 +30,28 @@ block content
         .messages-container
             if (messages.length > 0)
                 each message in messages
-                    .message
-                        h1.message-title #{message.title}
-                        if currentUser && currentUser.member
-                            .author-date
-                                .message-author #{message.author.firstName} #{message.author.lastName}
-                                .message-date #{message.date}
-                        p.message-body #{message.body}
-                        if currentUser && currentUser.admin 
-                            a(class='edit-button button' href=(`edit/` + message.id)) Edit
+                    if message.pinned
+                        .message.pinned
+                            .message-title 
+                                h1 #{message.title}
+                                img(src='/images/pinned.svg' alt='Pinned')
+                            if currentUser && currentUser.member
+                                .author-date
+                                    .message-author #{message.author.firstName} #{message.author.lastName}
+                                    .message-date #{message.date}
+                            p.message-body #{message.body}
+                            if currentUser && currentUser.admin 
+                                a(class='edit-button button' href=(`edit/` + message.id)) Edit
+                each message in messages
+                    if !message.pinned
+                        .message
+                            h1.message-title #{message.title}
+                            if currentUser && currentUser.member
+                                .author-date
+                                    .message-author #{message.author.firstName} #{message.author.lastName}
+                                    .message-date #{message.date}
+                            p.message-body #{message.body}
+                            if currentUser && currentUser.admin 
+                                a(class='edit-button button' href=(`edit/` + message.id)) Edit
             else
                 p No messages to display!
