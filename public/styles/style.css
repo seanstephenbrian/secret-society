@@ -266,6 +266,7 @@ form .form-section {
 }
 
 form label {
+    text-align: start;
     font-size: calc(0.7*var(--rvv));
     margin: 0 20px 7px;
 }
@@ -643,11 +644,6 @@ form input[type='submit'].confirm-delete-button {
 }
 
 @media screen and (min-width: 918px) {
-    
-    .messages .large-heading {
-        background-color: transparent;
-    }
-
     .message {
         max-width: 800px;
     }
