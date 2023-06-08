@@ -13,6 +13,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const bcrypt = require('bcryptjs');
 
+// routers:
 var indexRouter = require('./routes/index');
 const adminRouter = require('./routes/become-admin');
 const deleteRouter = require('./routes/delete');
